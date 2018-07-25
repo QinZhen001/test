@@ -18,7 +18,18 @@ npm run build
 npm run build --report
 ```
 
+<<<<<<< HEAD
 sdgsdg
 
 
 asdasdasd
+=======
+sdgsdgasdasdds
+
+
+asdadada
+>>>>>>> featurel
+
+
+
+safsdfsd
