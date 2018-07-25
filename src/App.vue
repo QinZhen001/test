@@ -83,11 +83,17 @@
 
       </el-main>
     </el-container>
+    <test :myTitle="myTitle"></test>
   </div>
 </template>
 
 <script>
+  import Test from './components/HelloWorld.vue'
+
   export default {
+    mounted(){
+      this.myTitle = this.find()
+    },
     data() {
       return {
         gridData: [{
@@ -112,7 +118,13 @@
     methods: {
       selectHandler(index){
         console.log(index)
+      },
+      find(){
+        return 'aaaaaaaaaassssssssssssssssss'
       }
+    },
+    components: {
+      Test
     }
   }
 </script>
