@@ -1,162 +1,75 @@
 <template>
   <div id="app">
-    <el-container>
-      <el-aside width="200px">
-        <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          @select="selectHandler"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b">
-          <el-tooltip effect="light" placement="right">
-            <div slot="content" class="tooltip">
-              <div class="wrapper">
-                <ul class="left">
-                  <li :key="item.address" v-for="item in gridData">{{item.date}}</li>
-                </ul>
-                <div class="line"></div>
-                <ul>
-                  <li :key="item.address" v-for="item in gridData">{{item.date}}</li>
-                </ul>
-              </div>
-            </div>
-            <el-menu-item index="1">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航一</span>
-            </el-menu-item>
-          </el-tooltip>
-          <el-tooltip effect="light" placement="right">
-            <div slot="content" class="tooltip">
-              <div class="wrapper">
-                <ul class="left">
-                  <li :key="item.address" v-for="item in gridData">{{item.date}}</li>
-                </ul>
-                <div class="line"></div>
-                <ul>
-                  <li :key="item.address" v-for="item in gridData">{{item.date}}</li>
-                </ul>
-              </div>
-            </div>
-            <el-menu-item index="2">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航二</span>
-            </el-menu-item>
-          </el-tooltip>
-          <el-tooltip effect="light" placement="right">
-            <div slot="content" class="tooltip">
-              <div class="wrapper">
-                <ul class="left">
-                  <li :key="item.address" v-for="item in gridData">{{item.date}}</li>
-                </ul>
-                <div class="line"></div>
-                <ul>
-                  <li :key="item.address" v-for="item in gridData">{{item.date}}</li>
-                </ul>
-              </div>
-            </div>
-            <el-menu-item index="3">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航三</span>
-            </el-menu-item>
-          </el-tooltip>
-          <el-tooltip effect="light" placement="right">
-            <div slot="content" class="tooltip">
-              <div class="wrapper">
-                <ul class="left">
-                  <li :key="item.address" v-for="item in gridData">{{item.date}}</li>
-                </ul>
-                <div class="line"></div>
-                <ul>
-                  <li :key="item.address" v-for="item in gridData">{{item.date}}</li>
-                </ul>
-              </div>
-            </div>
-            <el-menu-item index="4">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航四</span>
-            </el-menu-item>
-          </el-tooltip>
-        </el-menu>
-      </el-aside>
-      <el-main>
+    <button @click.stop="clickHandler">onClick</button>
+    <el-select v-model="value6" placeholder="请选择">
+      <el-option
+        v-for="item in cities"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+        <span style="float: left">{{ item.label }}</span>
+        <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
+      </el-option>
+      <el-option class="item" @click.stop="clickHandler">
+        <span>+ </span>
+        <span>新增用户</span>
+      </el-option>
+    </el-select>
 
-      </el-main>
-    </el-container>
-    <test :myTitle="myTitle"></test>
+    <div class="select">
+      <custom-select></custom-select>
+    </div>
   </div>
 </template>
 
 <script>
-  import Test from './components/HelloWorld.vue'
+  import CustomSelect from './components/custom-select.vue'
 
   export default {
-    mounted(){
-      this.myTitle = this.find()
-    },
     data() {
       return {
-        gridData: [{
-          date: '模拟数据1',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+        cities: [{
+          value: 'Beijing',
+          label: '北京'
         }, {
-          date: '模拟数据2',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          value: 'Shanghai',
+          label: '上海'
         }, {
-          date: '模拟数据3',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
+          value: 'Nanjing',
+          label: '南京'
         }, {
-          date: '模拟数据4',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }]
+          value: 'Chengdu',
+          label: '成都'
+        }, {
+          value: 'Shenzhen',
+          label: '深圳'
+        }, {
+          value: 'Guangzhou',
+          label: '广州'
+        }],
+        value6: ''
       }
     },
     methods: {
-      selectHandler(index){
-        console.log(index)
-      },
-      find(){
-        return 'aaaaaaaaaassssssssssssssssss'
+      clickHandler(){
+        this.cities.push({
+          value: 'Guangzhou',
+          label: '广州'
+        })
       }
     },
     components: {
-      Test
+      CustomSelect
     }
   }
 </script>
 
-<style>
-  .wrapper {
-    position: relative;
-    display: flex;
-    width: 400px;
-    height: 300px;
+<style type="text/less" lang="less" scoped>
+  #app {
+    padding: 10px;
   }
 
-  .wrapper ul {
-    flex: 1 1 auto;
+  .select {
+    margin-top: 100px;
   }
-
-  .wrapper ul li {
-    height: 50px;
-    line-height: 50px;
-    font-size: 22px;
-  }
-
-  .line {
-    position: absolute;
-    left: 180px;
-    border-right: 1px solid #ddd;
-    width: 1px;
-    height: 100%;
-  }
-
-  .el-tooltip__popper {
-    margin-left: 0 !important;
-  }
-
 </style>
