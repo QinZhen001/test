@@ -1,22 +1,12 @@
 <template>
   <div id="app">
     <button @click.stop="clickHandler">onClick</button>
-    <el-select v-model="value6" placeholder="请选择">
-      <el-option
-        v-for="item in cities"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-        <span style="float: left">{{ item.label }}</span>
-        <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
-      </el-option>
-      <el-option class="item" @click.stop="clickHandler">
-        <span>+ </span>
-        <span>新增用户</span>
-      </el-option>
-    </el-select>
-
-    <div class="select">
+    <div class="select-wrapper">
+      <!--基于element的实现方式-->
+      <ele-select></ele-select>
+    </div>
+    <div class="select-wrapper">
+      <!--自定义的select实现方法-->
       <custom-select></custom-select>
     </div>
   </div>
@@ -24,32 +14,9 @@
 
 <script>
   import CustomSelect from './components/custom-select.vue'
+  import EleSelect from './components/ele-select.vue'
 
   export default {
-    data() {
-      return {
-        cities: [{
-          value: 'Beijing',
-          label: '北京'
-        }, {
-          value: 'Shanghai',
-          label: '上海'
-        }, {
-          value: 'Nanjing',
-          label: '南京'
-        }, {
-          value: 'Chengdu',
-          label: '成都'
-        }, {
-          value: 'Shenzhen',
-          label: '深圳'
-        }, {
-          value: 'Guangzhou',
-          label: '广州'
-        }],
-        value6: ''
-      }
-    },
     methods: {
       clickHandler(){
         this.cities.push({
@@ -59,7 +26,8 @@
       }
     },
     components: {
-      CustomSelect
+      CustomSelect,
+      EleSelect
     }
   }
 </script>
@@ -69,7 +37,7 @@
     padding: 10px;
   }
 
-  .select {
+  .select-wrapper {
     margin-top: 100px;
   }
 </style>
