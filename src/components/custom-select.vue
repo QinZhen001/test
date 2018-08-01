@@ -11,7 +11,7 @@
     </div>
     <div class="menu-wrapper" v-show="showFlag">
       <div class="menu">
-        <div class="list-wrapper">
+        <div class="list-wrapper" ref="listWrapper">
           <ul>
             <li v-for="(item,index) in cities" :key="index" @click.stop="clickItem(item.label)">{{item.label}}</li>
           </ul>
@@ -68,6 +68,7 @@
         this.selectVal = val
         this.toogleDropdown()
         // 还要把menu 还原成原来位置
+        //  console.log(this.$refs.listWrapper.style.top)
       }
     }
   }
@@ -75,17 +76,17 @@
 
 <style lang="less" scoped rel="stylesheet">
   .menu-item() {
-    font-size: 14px;
     padding: 0 20px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #606266;
+    width: 100%;
     height: 34px;
     line-height: 34px;
-    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     box-sizing: border-box;
     cursor: pointer;
+    font-size: 14px;
+    color: #606266;
   }
 
   .el-select-dropdown .el-popper {
@@ -93,26 +94,26 @@
   }
 
   .custom-select {
-    width: 220px;
     position: relative;
+    width: 220px;
     .select {
-      width: 100%;
       position: relative;
+      width: 100%;
       display: inline-block;
       input {
+        display: inline-block;
         padding-right: 30px;
         padding-left: 15px;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
         cursor: pointer;
         background-color: #fff;
         border-radius: 4px;
         border: 1px solid #dcdfe6;
         box-sizing: border-box;
         color: #606266;
-        display: inline-block;
         font-size: inherit;
-        height: 40px;
-        line-height: 40px;
-        width: 100%;
         outline: 0;
         transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
         &:hover {

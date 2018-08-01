@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <button @click.stop="clickHandler">onClick</button>
-    <div class="select-wrapper">
-      <!--基于element的实现方式-->
-      <ele-select></ele-select>
-    </div>
+    <!--<div class="select-wrapper">-->
+    <!--&lt;!&ndash;基于element的实现方式&ndash;&gt;-->
+    <!--<ele-select></ele-select>-->
+    <!--</div>-->
     <div class="select-wrapper">
       <!--自定义的select实现方法-->
       <custom-select></custom-select>
