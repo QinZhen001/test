@@ -1,43 +1,22 @@
 {
-  "name": "ttt",
-  "version": "0.0.1",
-  "description": "A WePY project",
-  "main": "dist/app.js",
+  "name": "my-vue-app",
+  "version": "0.0.0",
   "scripts": {
-    "dev": "wepy build --watch",
-    "build": "cross-env NODE_ENV=production wepy build --no-cache",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "author": "zhujiaqi <zhujiaqi@heywoods.cn>",
-  "license": "MIT",
   "dependencies": {
-    "crypto-js": "^3.1.9-1",
-    "redux": "^3.7.2",
-    "redux-actions": "^2.2.1",
-    "redux-promise": "^0.5.3",
-    "wepy": "^1.7.2-alpha3",
-    "wepy-async-function": "^1.4.6",
-    "wepy-redux": "^1.5.3"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "5.2.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-plugin-transform-export-extensions": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "cross-env": "^5.1.3",
-    "eslint": "^3.18.0",
-    "eslint-config-standard": "^7.1.0",
-    "eslint-friendly-formatter": "^2.0.7",
-    "eslint-plugin-html": "^2.0.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "less-plugin-autoprefix": "^2.0.0",
-    "wepy-eslint": "^1.5.3",
-    "wepy-compiler-babel": "^1.5.1",
-    "wepy-compiler-less": "1.3.10",
-    "wepy-plugin-uglifyjs": "^1.3.7",
-    "wepy-plugin-imagemin": "^1.5.3"
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@types/react-router-dom": "5.1.0",
+    "@vitejs/plugin-react": "^1.0.7",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.0"
   }
 }
