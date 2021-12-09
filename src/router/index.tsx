@@ -1,5 +1,5 @@
 import { BComponent, TComponent, DefaultPageComponent } from "../pages";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 export type AppRouteComponent = {
   path: string;
@@ -27,11 +27,11 @@ export const routes: AppRouteComponent[] = [
 ];
 
 export const RouteContainer = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
       {routes.map((item) => (
         <Route key={item.path} exact path={item.path} component={item.component} />
       ))}
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 );
