@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import videojs, { VideoJsPlayer } from "video.js";
 import { Parser } from "m3u8-parser";
 import "video.js/dist/video-js.min.css";
+import "./index.css";
 
 const src =
   "https://test-1302380933.cos.ap-shanghai.myqcloud.com/3b70b7e222488ffca5a464bfc6b7cff7_xxx.m3u8";
@@ -129,12 +130,10 @@ export const BComponent = () => {
       <button className="exchange" onClick={exchange}>
         exchange
       </button>
-      <div>当前segments长度: {segmentsLen}</div>
-      {hasChangePlayList ? <div>PlayList 发生了改变</div> : null}
-      <div className="wrapper wrapper1" style={{}}>
+      <div className="wrapper wrapper1" style={{ zIndex: show ? 1 : -1 }}>
         <video ref={videoRef} className="video-js vjs-big-play-centered" />
       </div>
-      <div className="wrapper wrapper2" style={{}}>
+      <div className="wrapper wrapper2" style={{ zIndex: show ? -1 : 1 }}>
         <video ref={videoRef2} className="video-js vjs-big-play-centered" />
       </div>
     </div>
