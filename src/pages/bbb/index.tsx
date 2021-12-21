@@ -5,7 +5,7 @@ import "video.js/dist/video-js.min.css";
 import "./index.css";
 
 const src =
-  "https://test-1302380933.cos.ap-shanghai.myqcloud.com/3b70b7e222488ffca5a464bfc6b7cff7_xxx.m3u8";
+  "https://test-1302380933.cos.ap-shanghai.myqcloud.com/1194f719834ce2354c629c98bf93c05f_xxx.m3u8";
 
 let segmentsLen = 0;
 
@@ -13,6 +13,7 @@ const options = {
   controls: true,
   // liveui: true,
 };
+let interval: any = null;
 
 export const BComponent = () => {
   const videoRef = useRef(null);
@@ -24,6 +25,21 @@ export const BComponent = () => {
 
   let player: VideoJsPlayer = null as unknown as VideoJsPlayer;
   let player2: VideoJsPlayer = null as unknown as VideoJsPlayer;
+
+  //   useEffect(() => {
+  //     if (interval) {
+  //       clearInterval(interval);
+  //     }
+  //     interval = setInterval(() => {
+  //       if (player2) {
+  //         console.log("player2 setInterval");
+  //         player.src({
+  //           type: "application/x-mpegURL",
+  //           src,
+  //         });
+  //       }
+  //     }, 5000);
+  //   }, []);
 
   useEffect(() => {
     if (!playerRef.current) {
@@ -50,13 +66,14 @@ export const BComponent = () => {
         parser.end();
         const parsedManifest = parser.manifest;
         // console.log("body", body);
-        // console.log("parsedManifest", parsedManifest);
+        console.log("parsedManifest", parsedManifest);
         // debugger;
         return parsedManifest;
       });
   };
 
-  const rePlay = () => {
+  const rePlay = (currentTime: number) => {
+    console.log("rePlay rePlay");
     // debugger;
     // player.reset();
     // player.src({
@@ -65,6 +82,13 @@ export const BComponent = () => {
     // });
     // player.load();
     // player.play();
+    player2.src({
+      type: "application/x-mpegURL",
+      src,
+    });
+    exchange();
+    player2.currentTime(currentTime);
+    player2.play();
   };
 
   const ended = async () => {
@@ -76,7 +100,7 @@ export const BComponent = () => {
     const data = await m3u8Analysis();
     if (data.segments.length !== segmentsLen) {
       segmentsLen = data.segments.length;
-      rePlay();
+      rePlay(whereYouAt);
     }
   };
 
@@ -87,9 +111,7 @@ export const BComponent = () => {
       type: "application/x-mpegURL",
       src,
     });
-
     player.on("ended", ended);
-
     const data = await m3u8Analysis();
     segmentsLen = data.segments.length;
 
