@@ -1,4 +1,4 @@
-import { BComponent, TComponent, DefaultPageComponent } from "../pages";
+import {  DefaultPageComponent } from "../pages";
 import { HashRouter, Route, Switch } from "react-router-dom";
 
 export type AppRouteComponent = {
@@ -13,16 +13,6 @@ export const routes: AppRouteComponent[] = [
     path: "/",
     component: DefaultPageComponent,
     title: "default",
-  },
-  {
-    path: "/page/b",
-    component: BComponent,
-    title: "bbbb",
-  },
-  {
-    path: "/page/t",
-    component: TComponent,
-    title: "tttt",
   },
 ];
 

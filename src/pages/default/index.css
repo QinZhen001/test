@@ -1,5 +1,13 @@
-li {
-  line-height: 26px;
-  height: 26px;
-  font-size: 18px;
+.input-sid {
+  position: fixed;
+  right: 0;
+  top: 50px;
+  width: 300px;
+  height: 20px;
+}
+
+.btn-sid{
+  position: fixed;
+  right: 0;
+  top: 80px;
 }

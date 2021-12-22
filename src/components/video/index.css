@@ -1,17 +1,19 @@
 .wrapper {
   position: fixed;
-  left: 0;
-  top: 0;
-  width: 360px;
-  height: 640px;
+  width: 300px;
 }
 
 .wrapper1 {
   z-index: 1;
+  left: 0;
+  top: 0;
 }
 
 .wrapper2 {
-  z-index: 0;
+  z-index: 1;
+  left: 0;
+  /* left: 370px; */
+  top: 0;
 }
 
 .exchange {
