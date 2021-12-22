@@ -5,9 +5,10 @@ import "video.js/dist/video-js.min.css";
 import "./index.css";
 
 const src =
-  "https://test-1302380933.cos.ap-shanghai.myqcloud.com/1194f719834ce2354c629c98bf93c05f_xxx.m3u8";
+  "https://test-1302380933.cos.ap-shanghai.myqcloud.com/a9592ca35f42633c90d67bbccfc98440_xxx.m3u8";
 
 let segmentsLen = 0;
+let lock = false;
 
 const options = {
   controls: true,
@@ -33,7 +34,7 @@ export const BComponent = () => {
   //     interval = setInterval(() => {
   //       if (player2) {
   //         console.log("player2 setInterval");
-  //         player.src({
+  //         player2.src({
   //           type: "application/x-mpegURL",
   //           src,
   //         });
@@ -75,19 +76,24 @@ export const BComponent = () => {
   const rePlay = (currentTime: number) => {
     console.log("rePlay rePlay");
     // debugger;
-    // player.reset();
+
     // player.src({
     //   type: "application/x-mpegURL",
     //   src,
     // });
-    // player.load();
+    // player2.load();
     // player.play();
-    player2.src({
-      type: "application/x-mpegURL",
-      src,
-    });
+    // player2.src({
+    //   type: "application/x-mpegURL",
+    //   src,
+    // });
     exchange();
-    player2.currentTime(currentTime);
+    // player2.reset();
+    // player2.src({
+    //   type: "application/x-mpegURL",
+    //   src,
+    // });
+    player2.currentTime(currentTime - 3);
     player2.play();
   };
 
@@ -98,10 +104,12 @@ export const BComponent = () => {
     console.log("whereYouAt", whereYouAt);
     console.log("lengthOfVideo", lengthOfVideo);
     const data = await m3u8Analysis();
-    if (data.segments.length !== segmentsLen) {
-      segmentsLen = data.segments.length;
-      rePlay(whereYouAt);
-    }
+
+    rePlay(whereYouAt);
+    // if (data.segments.length !== segmentsLen) {
+    //   segmentsLen = data.segments.length;
+    //   rePlay(whereYouAt);
+    // }
   };
 
   const ready = async () => {
@@ -115,13 +123,51 @@ export const BComponent = () => {
     const data = await m3u8Analysis();
     segmentsLen = data.segments.length;
 
-    // player.on("timeupdate", (event) => {
-    //   console.log("The currentTime attribute has been updated. Again.", event);
-    // });
+    player.on("timeupdate", (event) => {
+      //   console.log("The currentTime attribute has been updated. Again.", event);
+
+      //   console.log("progress. ", event);
+      const whereYouAt = player.currentTime();
+      const lengthOfVideo = player.duration();
+      //   console.log("whereYouAt", whereYouAt);
+      //   console.log("lengthOfVideo", lengthOfVideo);
+      if (lengthOfVideo - whereYouAt < 10) {
+        // debugger;
+        if (!lock) {
+          //   debugger;
+          lock = true;
+          loadSrc();
+        }
+      }
+    });
 
     // player.on("durationchange", (event) => {
     //   console.log("Not sure why, but the duration of the video has changed.", event);
     // });
+
+    // player.on("progress", (event) => {
+    //     console.log("progress. ", event);
+    //   const whereYouAt = player.currentTime();
+    //   const lengthOfVideo = player.duration();
+    //   //   console.log("whereYouAt", whereYouAt);
+    //   //   console.log("lengthOfVideo", lengthOfVideo);
+    //   if (lengthOfVideo - whereYouAt < 10) {
+    //     debugger;
+    //     if (!lock) {
+    //       debugger;
+    //       lock = true;
+    //       loadSrc();
+    //     }
+    //   }
+    // });
+  };
+
+  const loadSrc = () => {
+    console.log("loadSrc");
+    player2.src({
+      type: "application/x-mpegURL",
+      src,
+    });
   };
 
   const ready2 = () => {
@@ -160,4 +206,12 @@ export const BComponent = () => {
       </div>
     </div>
   );
+};
+
+type MyArgs = {
+  id: string;
+};
+
+const args: MyArgs = {
+  id: "safasfa",
 };
