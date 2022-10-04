@@ -1,6 +1,7 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import { onMounted, ref,provide } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
 
 const aa = {
@@ -8,6 +9,14 @@ const aa = {
   bb: "vvvv s"
 }
 
+
+const child = ref(null)
+
+onMounted(() => {
+  console.log('child', child.value)
+})
+
+provide('aaa','aaa')
 </script>
 
 <template>
@@ -19,7 +28,8 @@ const aa = {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  {{aaa}} {ddd}
+  <HelloWorld msg="Vite + Vue" ref="child"  class="btn large"/>
 </template>
 
 <style scoped>
