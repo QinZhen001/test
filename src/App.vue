@@ -1,38 +1,26 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { onMounted, ref,provide } from 'vue';
-import HelloWorld from './components/HelloWorld.vue'
+import sdk from "agora-miniapp-sdk"
 
-const aa = {
-  aa: "aaaa",
-  bb: "vvvv s"
-}
+console.log('sdk')
 
-
-const child = ref(null)
-
-onMounted(() => {
-  console.log('child', child.value)
-})
-
-provide('aaa','aaa')
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+
   </div>
-  {{aaa}} {ddd}
-  <HelloWorld msg="Vite + Vue" ref="child"  class="btn large"/>
 </template>
 
 <style scoped>
+.wrapper {
+  width: 200px;
+  height: 200px;
+  background: forestgreen;
+  transform: translate(100px, 100px);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

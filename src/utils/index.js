@@ -1,10 +1,32 @@
-// const aaa = {
-//   ddd:"ddd"
-// }
+import { defineComponent, h } from 'vue'
 
-// module.exports = aaa
-
-
-export default {
-  ddd:"ddd"
+export const createC = () => {
+  return defineComponent({
+    setup() {
+      return {
+        message: 'hello'
+      }
+    },
+    template: `<div>createC111</div>`,
+    // render: () => <div>adadasad<p>adadad</p></div>,
+    // render: ()=>{
+    //   return h('div',{},'createC222')
+    // }
+  })
 }
+
+// module.js
+let thing =  {
+  name: 'thing',
+};
+
+export { thing, thing as default };
+// export { thing };
+// export default thing;
+
+setTimeout(() => {
+  thing.name = 'changed';
+}, 500);
+
+
+// export default {}

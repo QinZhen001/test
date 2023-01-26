@@ -1,31 +1,22 @@
 <script setup>
-import { useAttrs,inject, watch,ref } from "vue"
+import { useAttrs, inject, watch, ref, reactive, onRenderTracked, onRenderTriggered,h } from "vue"
 
-const attrs = useAttrs()
-console.log('attr', attrs.msg)
-
-
-const obj = inject('message')
-
-
-watch(obj, (val)=>{
-  console.log('val', val)
+const reactive11 = ref("12313")
+const reactive22 = ref("1waewa2313")
+const other = reactive({
+  aaa: "aaa"
 })
 
-const message =  ref(obj.message) 
-// const message = obj.aaa
-console.log(1111, obj)
 
 
-// const aaa = inject('aaa')
-// console.log('aaa',aaa)
+
 
 </script>
 
 
 
 <template>
-    {{ message }}
+  asdad {{ reactive11 }}  {{reactive22}}
   <!-- <div class="ssss">
     <slot x="xwfwfdw" y="ywefwefwef"></slot>
   </div>

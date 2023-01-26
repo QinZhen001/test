@@ -10,19 +10,18 @@ import Test from "./www.vue"
 
 
 <template >
-  <!-- {{message}} -->
-  <Test v-slot="{ x, y }">
-    Mouse is at: {{ x }}, {{ y }}
-
-    <div>
-      xxx yyy zzzz
-    </div> 
-
-  </Test>
+  <div class="model"> 
+    <Test></Test>
+  </div>
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
+.model {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  width: 100px;
+  height: 100px;
+  background: red;
 }
 </style>
