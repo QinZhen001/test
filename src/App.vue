@@ -1,8 +1,10 @@
 
 <template>
+  <my-header></my-header>
   <VModel v-model.no-whitespace="defaultModel" v-model:lastName.lazy="lastName"></VModel>
   <Expose ref="exposeComponentRef"></Expose>
   <Attr aaa="aaa" bbb="bbb" ccc="ccc"></Attr>
+  <RefVsReactive></RefVsReactive>
   <Slot>
     <!-- default slot -->
     <template #default>
@@ -22,7 +24,7 @@
   <Watch></Watch>
   <Vonce></Vonce>
   <Vemo></Vemo>
-
+  <Directive></Directive>
 </template>
 
 
@@ -43,6 +45,8 @@ import Watch from './components/Watch.vue';
 import Vonce from './components/Vonce.vue';
 import Vemo from './components/Vemo.vue';
 import MyTeleport from './components/MyTeleport.vue';
+import RefVsReactive from './components/RefVsReactive.vue';
+import Directive from './components/Directive.vue';
 
 const defaultModel = ref('defaultModelVal')
 const lastName = ref('lastNameVal')
