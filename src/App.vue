@@ -5,6 +5,14 @@
   <Expose ref="exposeComponentRef"></Expose>
   <Attr aaa="aaa" bbb="bbb" ccc="ccc"></Attr>
   <RefVsReactive></RefVsReactive>
+  <Suspense>
+    <template #default>
+      <TestSuspense></TestSuspense>
+    </template>
+    <template #fallback>
+      Loading
+    </template>
+  </Suspense>
   <Slot>
     <!-- default slot -->
     <template #default>
@@ -25,6 +33,8 @@
   <Vonce></Vonce>
   <Vemo></Vemo>
   <Directive></Directive>
+  <Motion></Motion>
+  <Drop></Drop>
 </template>
 
 
@@ -36,7 +46,7 @@ const logger = new Logger("App")
 
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, Suspense, onErrorCaptured } from 'vue'
 import VModel from './components/VModel.vue';
 import Expose from './components/Expose.vue';
 import Attr from './components/Attr.vue';
@@ -47,6 +57,9 @@ import Vemo from './components/Vemo.vue';
 import MyTeleport from './components/MyTeleport.vue';
 import RefVsReactive from './components/RefVsReactive.vue';
 import Directive from './components/Directive.vue';
+import Motion from './components/Motion.vue';
+import TestSuspense from './components/TestSuspense.vue';
+import Drop from './components/Drop.vue';
 
 const defaultModel = ref('defaultModelVal')
 const lastName = ref('lastNameVal')
@@ -59,6 +72,11 @@ onMounted(() => {
   logger.log("exposeComponentRef expose1", exposeComponentRef.value.expose1)
   logger.log("exposeComponentRef expose2", exposeComponentRef.value.expose2)
 })
+
+onErrorCaptured((msg) => {
+  logger.error(msg)
+})
+
 
 </script>
 

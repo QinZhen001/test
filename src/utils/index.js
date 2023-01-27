@@ -29,4 +29,3 @@ setTimeout(() => {
 }, 500);
 
 
-// export default {}
