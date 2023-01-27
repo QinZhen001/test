@@ -1,4 +1,4 @@
-import MyHeader from '../components/MyHeader1.vue'
+import MyHeader from '../components/MyHeader.vue'
 
 export default {
   install: (app, options) => {
