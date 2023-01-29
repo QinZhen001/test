@@ -36,6 +36,7 @@
   <Drop></Drop>
   <section class="component">
     <button @click="navToIntersection">Nav To Intersection Observer</button>
+    <button @click="navToTab">Nav To Tab</button>
   </section>
 </template>
 
@@ -83,6 +84,12 @@ onErrorCaptured((msg) => {
 const navToIntersection = () => {
   router.push({
     path: "/intersection"
+  })
+}
+
+const navToTab = () => {
+  router.push({
+    path: "/tab"
   })
 }
 

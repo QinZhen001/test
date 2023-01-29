@@ -24,6 +24,8 @@ const getArticleInfo = async () => {
   return article
 }
 
+// await in top level
+// now setup() is async function
 const article = await getArticleInfo()
 
 </script>
