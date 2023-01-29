@@ -1,12 +1,15 @@
 import { createRouter, createWebHashHistory } from "vue-router"
-import Home from '../pages/home.vue'
-import Intersection from "../pages/intersection.vue"
-import Tab from "../pages/tab.vue"
+
+const Home = () => import('../pages/home.vue')
+const Intersection = () => import("../pages/intersection.vue")
+const Tab = () => import("../pages/tab.vue")
+const Pinia = () => import('../pages/pinia.vue')
 
 const routes = [
   { path: '/', component: Home },
   { path: '/intersection', component: Intersection },
-  { path: '/tab', component: Tab }
+  { path: '/tab', component: Tab },
+  { path: '/pinia', component: Pinia }
 ]
 
 
