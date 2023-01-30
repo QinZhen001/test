@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^9.12.0",
     "dayjs": "^1.10.7",
     "lodash": "^4.17.21",
     "motion": "^10.15.5",

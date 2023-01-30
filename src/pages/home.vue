@@ -34,9 +34,12 @@
   <Directive></Directive>
   <Motion></Motion>
   <Drop></Drop>
+  <Dynamic></Dynamic>
   <section class="component">
-    <button @click="navToIntersection">Nav To Intersection Observer</button>
-    <button @click="navToTab">Nav To Tab</button>
+    <div>Nav To</div>
+    <button @click="navToIntersection">Intersection Observer</button>
+    <button @click="navToTab">Tab</button>
+    <button @click="navToPinia">Pinia</button>
   </section>
 </template>
 
@@ -64,6 +67,10 @@ import Directive from '../components/Directive.vue';
 import Motion from '../components/Motion.vue';
 import TestSuspense from '../components/TestSuspense.vue';
 import Drop from '../components/Drop.vue';
+import Dynamic from '../components/dynamic/index.vue';
+
+
+
 const defaultModel = ref('defaultModelVal')
 const lastName = ref('lastNameVal')
 const exposeComponentRef = ref()
@@ -90,6 +97,13 @@ const navToIntersection = () => {
 const navToTab = () => {
   router.push({
     path: "/tab"
+  })
+}
+
+
+const navToPinia = () => {
+  router.push({
+    path: "/pinia"
   })
 }
 

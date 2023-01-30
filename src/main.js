@@ -7,7 +7,7 @@ import './style.css'
 
 const app = createApp(App)
 app.use(router)
-// app.use(createPinia())
+app.use(createPinia())
 
 // app.provide(/* 注入名 */ 'message', /* 值 */ obj)
 

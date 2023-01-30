@@ -8,9 +8,22 @@
 
 
 <script setup>
-import { useCounterStore } from "../stores/couter"
+import { onUpdated } from "vue"
+import { storeToRefs } from "pinia"
+import { useCounterStore } from "../stores/counter"
 
 const store = useCounterStore()
+// REACTIVE
+const { count: reactiveCount } = storeToRefs(store)
+// NOT REACTIVE
+const { count } = store
+// REACTIVE
+store.count++
 
-// store++
+onUpdated(() => {
+  console.log("reactiveCount", reactiveCount.value)
+  console.log("count", count)
+})
+
+
 </script>
