@@ -1,0 +1,1 @@
+import{o as t,c as a,a as e,t as r,b as s,X as u}from"./index.8ad24da2.js";const n=e("div",null,"Router Params",-1),l=e("div",null,"Router Query",-1),m={__name:"router-params",setup(c){const o=u();return console.log("route",o),(i,_)=>(t(),a("div",null,[n,e("div",null,"username: "+r(s(o).params.username),1),l,e("div",null,"id: "+r(s(o).query.id),1)]))}};export{m as default};
