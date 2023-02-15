@@ -3,6 +3,7 @@
   <VModel v-model.no-whitespace="defaultModel" v-model:lastName.lazy="lastName"></VModel>
   <Expose ref="exposeComponentRef"></Expose>
   <Attr aaa="aaa" bbb="bbb" ccc="ccc"></Attr>
+  <Emit @update="onEmitUpdate" @test="onEmitTest"></Emit>
   <RefVsReactive></RefVsReactive>
   <Suspense>
     <template #default>
@@ -40,6 +41,7 @@
     <button @click="navToIntersection">Intersection Observer</button>
     <button @click="navToTab">Tab</button>
     <button @click="navToPinia">Pinia</button>
+    <button @click="navToRouterPrams">RouterPrams</button>
   </section>
 </template>
 
@@ -68,7 +70,7 @@ import Motion from '../components/Motion.vue';
 import TestSuspense from '../components/TestSuspense.vue';
 import Drop from '../components/Drop.vue';
 import Dynamic from '../components/dynamic/index.vue';
-
+import Emit from '../components/Emit.vue';
 
 
 const defaultModel = ref('defaultModelVal')
@@ -105,6 +107,30 @@ const navToPinia = () => {
   router.push({
     path: "/pinia"
   })
+}
+
+const navToRouterPrams = () => {
+  router.push({
+    name: "params",
+    query: {
+      id: 1
+    },
+    // 只有定义在router 的:params 才能在route.params中获取到
+    // https://github.com/vuejs/router/blob/main/packages/router/CHANGELOG.md#414-2022-08-22
+    params: {
+      username: "user1",
+      // pwd: "123456"
+    },
+  })
+}
+
+const onEmitUpdate = (val) => {
+  console.log("onEmitUpdate", val)
+}
+
+
+const onEmitTest = (val) => {
+  console.log("onEmitTest", val)
 }
 
 

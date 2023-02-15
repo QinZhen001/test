@@ -5,10 +5,6 @@
   </section>
 </template>
 
-<!-- <script>
-import { Logger } from "../utils/log"
-const logger = new Logger("Attr Component")
-</script> -->
 
 
 <script  setup>
