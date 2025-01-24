@@ -10,3 +10,5 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 feat: test 1 
 
 feat: test 2 
+
+feat: test 3 
