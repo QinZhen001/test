@@ -1,7 +1,7 @@
 {
   "name": "my-vue-app",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,6 +20,6 @@
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "vite": "^3.1.0",
-     "release-it": "^18.0.0"
+    "release-it": "^18.0.0"
   }
 }
